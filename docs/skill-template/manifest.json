@@ -1,6 +1,7 @@
 [
-  "cowork-roi-member/config/team_channel.json",
   "cowork-roi-member/README.md",
+  "cowork-roi-member/SKILL.md",
+  "cowork-roi-member/config/team_channel.json",
   "cowork-roi-member/references/map-my-work-playbook.md",
   "cowork-roi-member/references/value-pillars.md",
   "cowork-roi-member/scripts/apqc_taxonomy.json",
@@ -13,6 +14,5 @@
   "cowork-roi-member/scripts/prune_sessions.py",
   "cowork-roi-member/scripts/reconcile_taxonomy.py",
   "cowork-roi-member/scripts/roles_taxonomy.json",
-  "cowork-roi-member/scripts/skills_vocabulary.json",
-  "cowork-roi-member/SKILL.md"
+  "cowork-roi-member/scripts/skills_vocabulary.json"
 ]
