@@ -26,7 +26,7 @@ This skill is **self-contained** — it bundles its own analysis pipeline (`clas
    `Documents/Cowork/skills/cowork-roi-member/`
 2. Changes appear after OneDrive sync (~35 seconds).
 
-## First-time setup (read this before your first run)
+## First-time setup — for the admin / manager / lead only (read this before your first run)
 
 This skill posts each person's report into a **shared Teams channel** that the whole team writes to. If you run the skill without belonging to that channel, it has **nowhere to post** and will not work.
 
