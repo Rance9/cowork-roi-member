@@ -41,7 +41,7 @@ You only do this **once** for your team.
 
 2. **Copy your team's Teams channel link.** In Microsoft Teams, find the channel in the left-hand list,
    hover over its name, and click the **⋯ More options** button that appears (or right-click the channel).
-   Choose **Get link to channel** — older versions of Teams call this **Copy link** — then click **Copy**.
+   Choose **Copy link** (some Teams versions label it **Get link to channel**) — then click **Copy**.
 
 3. **Paste the link** into the box on the page and click **Parse & verify.** The page reads the link and
    shows the **channel name** it found — check it's the right channel.
