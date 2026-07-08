@@ -15,7 +15,8 @@ skills that work together through **one shared Teams channel**:
   what teammates post — never anyone's files. (Upstream project:
   https://github.com/Fepilot/cowork-roi-team-dashboard.)
 
-To make rollout effortless, this repository also hosts a small web page — the **Installer Studio** — where a
+To make rollout effortless, this repository also hosts a small web page — the
+**[Installer Studio](https://rance9.github.io/cowork-roi-member/)** — where a
 manager pastes their team's Teams channel link once and downloads **both** skills with that channel already
 built in. Nobody is ever asked to paste a link. The rest of this guide walks a manager through the whole
 process.
