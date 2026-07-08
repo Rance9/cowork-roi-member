@@ -8,6 +8,7 @@ skills that work together through **one shared Teams channel**:
   their Copilot Cowork activity into a clear, de-identified summary — hours saved, the value of that time,
   the kinds of work Copilot helped with, and what they produced — and posts it as easy-to-read tables into
   the shared channel. Names, file names, and prompts are never shared; only totals and categories.
+  (Upstream project: https://github.com/Fepilot/cowork-roi-member.)
 - **Cowork ROI — Team Dashboard skill** (the manager skill). The manager/lead runs it. It reads the shared
   channel, combines everyone's summaries into one anonymized HTML dashboard, and **emails the team a
   newsletter** (the dashboard plus a one-page guide) on a schedule the manager chooses. It only ever reads
