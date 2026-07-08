@@ -1,71 +1,95 @@
-# Cowork ROI — Member skill
+# Cowork ROI — Team Member Cowork Skill
 
-A self-contained skill for **Microsoft Copilot Cowork** that posts a **de-identified, table-formatted Cowork ROI summary** to your team's Teams channel — with a **privacy opt-out** so you can exclude any chat or task before it posts.
+**Cowork ROI** is a two-part Microsoft Copilot **Cowork** solution that shows a team the value they're
+getting from Copilot — and turns it into a tidy report that lands in everyone's inbox. It's made of two
+skills that work together through **one shared Teams channel**:
 
-This is the **aggregated / team-rollup member step** companion to the personal [What Cowork Did for Me](https://github.com/Fepilot/What-Cowork-did-for-me) report skill.
+- **Cowork ROI — Team Member skill** (this repository). Every teammate runs it on their own work. It turns
+  their Copilot Cowork activity into a clear, de-identified summary — hours saved, the value of that time,
+  the kinds of work Copilot helped with, and what they produced — and posts it as easy-to-read tables into
+  the shared channel. Names, file names, and prompts are never shared; only totals and categories.
+- **Cowork ROI — Team Dashboard skill** (the manager skill). The manager/lead runs it. It reads the shared
+  channel, combines everyone's summaries into one anonymized HTML dashboard, and **emails the team a
+  newsletter** (the dashboard plus a one-page guide) on a schedule the manager chooses. It only ever reads
+  what teammates post — never anyone's files. (Upstream project:
+  https://github.com/Fepilot/cowork-roi-team-dashboard.)
 
-## Contents
+To make rollout effortless, this repository also hosts a small web page — the **Installer Studio** — where a
+manager pastes their team's Teams channel link once and downloads **both** skills with that channel already
+built in. Nobody is ever asked to paste a link. The rest of this guide walks a manager through the whole
+process.
 
-- [What it does](#what-it-does)
-- [Download](#download)
-- [First-time setup — for admins / managers / leads only](#first-time-setup)
-- [Use it / run it — for everyone](#use-it)
+## What you'll need first
 
-<a id="what-it-does"></a>
-## What it does
+A **Teams channel** where your team's Cowork reports will be collected — for example
+`Cowork report - {your team name}`. If you don't have one yet, create it in Microsoft Teams before you
+start, and add the people whose work you want included. Keep the channel just for these reports.
 
-It harvests your own Copilot Cowork sessions from OneDrive, computes research-anchored **time-saved / value / speed** metrics, and renders them as HTML tables (headline KPIs, time-by-category, value pillars, jobs-to-be-done, work-by-business-process, roles, skills, analyzed → produced, deliverables, activity-by-day).
+## Set it up — step by step
 
-Privacy by design:
-- **Person names, file names and prompts are excluded**
-- Business processes are grouped into a short canonical set
-- Each deliverable is labelled with the business process it supported (no file names)
-- Every session is individually selectable in a privacy opt-out picker before posting
+You only do this **once** for your team.
 
-<a id="download"></a>
-## Download
+1. **Open the Installer Studio page** in your web browser:
+   https://rance9.github.io/cowork-roi-member/
 
-Grab everything in one file: [`cowork-roi-member.zip`](cowork-roi-member.zip) — contains the full `cowork-roi-member/` skill folder ready to unzip into your Cowork skills directory.
+2. **Copy your team's Teams channel link.** In Microsoft Teams, find the channel in the left-hand list,
+   hover over its name, and click the **⋯ More options** button that appears (or right-click the channel).
+   Choose **Get link to channel** — older versions of Teams call this **Copy link** — then click **Copy**.
 
-## Install
+3. **Paste the link** into the box on the page and click **Parse & verify.** The page reads the link and
+   shows the **channel name** it found — check it's the right channel.
 
-This skill is **self-contained** — it bundles its own analysis pipeline (`classify.py`, `compute.py`, taxonomy data, harvest references). No other skill is required.
+4. **Download both skills.** Two buttons appear, each already carrying your channel:
+   - **Download the manager skill (.zip)** — you install this one.
+   - **Download the team-member skill (.zip)** — you send this one to your team.
 
-1. Copy the whole [`cowork-roi-member/`](cowork-roi-member/) folder into your Cowork skills directory:
-   `Documents/Cowork/skills/cowork-roi-member/`
-2. Changes appear after OneDrive sync (~35 seconds).
+5. **Install the manager skill (that's you).** Open **Copilot Cowork**, upload the *manager* zip, and ask it
+   to install the skill (for example: *“upload this zip file and ask it to install the skill”*). Because your
+   channel is already built in, it won't ask you for a link. Once installed, you can say *“build the team
+   Cowork ROI dashboard”* any time — or ask it to run on a schedule and email the team automatically.
 
-<a id="first-time-setup"></a>
-## First-time setup — for the admin / manager / lead only (read this before your first run)
+6. **Share the team-member skill with your team.** Send the *team-member* zip to everyone whose Copilot work
+   you'd like included. Each person uploads it in Copilot Cowork and asks it to install the skill — the same
+   simple step. Their reports start posting to your channel automatically; no one is asked for a link.
 
-This skill posts each person's report into a **shared Teams channel** that the whole team writes to. If you run the skill without belonging to that channel, it has **nowhere to post** and will not work.
+That's the whole setup. From here on, teammates post their summaries and your manager skill rolls them up
+into the emailed newsletter — refreshing on its schedule with nothing more for you to do.
 
-So before anyone runs it, the team needs **one** dedicated Teams channel, created by the group's **manager / admin / lead**. This is a **one-time setup** — once it's in place and automated, nobody needs to do it again.
+> **Want your own Copilot work counted too?** As the manager you can *also* install the team-member skill on
+> your own Copilot — that's optional, and only needed if you want your own stats in the team totals.
 
-> **Are you a team member (not the lead)?** Wait for your manager/admin/lead to send you the channel link, then jump to [Use it — for team members](#use-it). Everything below in this section is for the person setting the channel up.
+## What the downloads contain
 
-### For the manager / admin / lead — how to configure the channel
+Each download is an ordinary copy of the matching skill with **your channel already filled in**, so it works
+the moment it's installed. (If anyone ever installs a plain, un-configured copy, the skill simply asks for
+the channel link the first time it runs, the way it normally would.)
 
-1. **Create a Teams channel** named:
-   `Cowork Report - {name of your team}`
-   (for example, `Cowork Report - ROI Advisors`).
-2. **Invite everyone who will be measured** in the run and add them as **owners** of the channel.
-3. **Keep the channel data-only.** This channel exists *only* for the Cowork member skill to post individual reports. **Nobody should hold manual conversations in it** — stray messages can break the downstream digestion/aggregation of the data.
-4. **Copy the channel link.** Open the channel's **⋯** menu and choose **Copy link**:
+## Is my channel link private?
 
-   ![Copy the channel link from the ⋯ menu](images/copy-channel-link.png)
+Yes. The link you paste stays entirely inside your own web browser. It is never sent to a server, and
+the page makes no outside network calls — it only builds the download for you, locally.
 
-5. **Share that link with your team.** Every member will paste it when they run the skill (see below), so the reports all land in this one channel.
+---
 
-<a id="use-it"></a>
-## Use it — for team members
+## Prefer to install by hand?
 
-Ask Cowork: **"post my Cowork ROI stats to the team channel."**
+You don't have to let Copilot unpack the zip for you — you can drop the skill into place yourself:
 
-The first time you run it, the skill will **ask which Teams channel to post the report to**. Paste the channel link your manager / admin / lead shared with you (the one they copied in step 4 above). After that, the skill posts your de-identified report straight into the shared channel.
+1. **Download** a skill from the page above and **unzip** it. You'll get a single folder — either
+   `cowork-roi-member/` (the team-member skill) or `cowork-roi-team-dashboard/` (the manager skill).
+2. **Copy that folder** into your Cowork skills directory (use the line that matches the skill you're
+   installing):
+   ```
+   Documents/Cowork/skills/cowork-roi-member/
+   Documents/Cowork/skills/cowork-roi-team-dashboard/
+   ```
+3. Wait about 35 seconds for OneDrive to sync, and the skill is ready to use in Copilot Cowork.
 
-Here's what a posted report looks like in the channel:
+Because your channel is already baked into the folder, there's nothing else to configure.
 
-![Example of a Cowork ROI report posted in the team channel](images/example-report-post.png)
+---
 
-See [`cowork-roi-member/README.md`](cowork-roi-member/README.md) and [`cowork-roi-member/SKILL.md`](cowork-roi-member/SKILL.md) for full documentation.
+<sub>Maintainer note: `docs/` holds the Installer Studio page (`index.html`, `app.js`, vendored
+`jszip.min.js`) and `skill-template/` — browser-fetched mirrors of both skills plus their manifests
+(`manifest.json` for the member skill, `manifest-dashboard.json` for the manager skill), regenerated by the
+sync workflow. Don't hand-edit `skill-template/`.</sub>

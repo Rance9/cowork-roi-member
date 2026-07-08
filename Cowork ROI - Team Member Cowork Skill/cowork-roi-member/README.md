@@ -9,6 +9,16 @@ header shows your **directory Role** (job title — no country, no name); the **
 grouped** into a short canonical set; each **deliverable is shown and labelled with the business
 process it supported** (no file names); and metric/section titles match the **Copilot ROI Report** skill.
 
+> **Setting this up for a team?** This skill is one half of a two-part solution. See the
+> [repository guide](../../README.md) for the full picture and the easiest way to roll it out — a page
+> that bakes your team's channel into ready-to-install downloads so nobody has to paste a link.
+
+## Download
+
+Grab the whole skill as one file: [`cowork-roi-member.zip`](../cowork-roi-member.zip) — the generic,
+un-customized copy for a manual install. (For a copy with your team's channel already built in, use the
+Installer Studio page linked in the [repository guide](../../README.md).)
+
 ## Install — one folder, no dependencies
 This skill is **self-contained**: it bundles its own analysis pipeline (`classify.py`, `compute.py`,
 taxonomy data, harvest references). You do **not** need `cowork-roi-report` or any other skill.
@@ -18,6 +28,28 @@ taxonomy data, harvest references). You do **not** need `cowork-roi-report` or a
 2. Changes appear after OneDrive sync (~35 seconds).
 
 That's it — nothing else to install, and no nested folders to flatten.
+
+## First-time setup — for the admin / manager / lead (one time)
+
+Before anyone runs the skill, your team needs **one** dedicated Teams channel for these reports, created
+by the manager / admin / lead. This is a one-time setup.
+
+1. **Create a Teams channel** named `Cowork Report - {your team}` (for example, `Cowork Report - ROI Advisors`).
+2. **Invite everyone who will be measured** and add them as **owners** of the channel.
+3. **Keep the channel data-only** — nobody should hold manual conversations in it, since stray messages can
+   break the downstream rollup.
+4. **Copy the channel link** — open the channel's **⋯ More options** menu and choose **Get link to channel**
+   (older Teams calls it **Copy link**):
+
+   ![Copy the channel link from the ⋯ menu](../../images/copy-channel-link.png)
+
+5. **Share that link with your team** — each member pastes it on their first run. (Or, easier, use the
+   Installer Studio page from the [repository guide](../../README.md) to bake the channel into the download
+   so no one is ever asked for a link.)
+
+Here's what a posted report looks like in the channel:
+
+![Example of a Cowork ROI report posted in the team channel](../../images/example-report-post.png)
 
 ## Use it
 Ask Cowork: **"post my Cowork ROI stats to the team channel."** The skill will:

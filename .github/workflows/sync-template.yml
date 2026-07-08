@@ -7,8 +7,8 @@ on:
   push:
     branches: [ main ]
     paths:
-      - "cowork-roi-member/**"
-      - "Cowork ROI Team Dashboard - Cowork Skill/**"
+      - "Cowork ROI - Team Member Cowork Skill/**"
+      - "Cowork ROI - Team Dashboard Cowork Skill/**"
       - ".github/workflows/sync-template.yml"
   workflow_dispatch:
 
@@ -29,7 +29,7 @@ jobs:
       - name: Rebuild the team-member skill template
         run: |
           set -euo pipefail
-          SRC="cowork-roi-member"
+          SRC="Cowork ROI - Team Member Cowork Skill/cowork-roi-member"
           DEST_ROOT="docs/skill-template"
           DEST_SKILL="$DEST_ROOT/cowork-roi-member"
 
@@ -59,7 +59,7 @@ jobs:
       - name: Rebuild the manager (dashboard) skill template
         run: |
           set -euo pipefail
-          MGR_SRC="Cowork ROI Team Dashboard - Cowork Skill/cowork-roi-team-dashboard"
+          MGR_SRC="Cowork ROI - Team Dashboard Cowork Skill/cowork-roi-team-dashboard"
           DEST_ROOT="docs/skill-template"
           DEST_SKILL="$DEST_ROOT/cowork-roi-team-dashboard"
 
@@ -113,8 +113,8 @@ jobs:
       - name: Warn if shared taxonomy files drift between the two skills
         run: |
           set -uo pipefail
-          MEM="cowork-roi-member"
-          MGR="Cowork ROI Team Dashboard - Cowork Skill/cowork-roi-team-dashboard"
+          MEM="Cowork ROI - Team Member Cowork Skill/cowork-roi-member"
+          MGR="Cowork ROI - Team Dashboard Cowork Skill/cowork-roi-team-dashboard"
           for f in scripts/process_groups.json scripts/skills_vocabulary.json scripts/roles_taxonomy.json references/value-pillars.md; do
             if [ -f "$MEM/$f" ] && [ -f "$MGR/$f" ]; then
               if ! cmp -s "$MEM/$f" "$MGR/$f"; then
