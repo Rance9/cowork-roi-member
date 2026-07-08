@@ -170,7 +170,7 @@
     font-size: 0.72rem;
   }
   .dl-block { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(96, 165, 250, 0.16); }
-  .dl-block:first-of-type { margin-top: 20px; }
+  .dl-block:first-of-type { margin-top: 8px; padding-top: 0; border-top: none; }
   .dl-label { margin: 0 0 10px; color: #dbe8ff; font-size: 0.96rem; }
   .dl-label .tag {
     display: inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
@@ -237,7 +237,7 @@
     <h1>Cowork ROI Installer Studio</h1>
     <p class="tagline">Set up <strong>Cowork ROI</strong> for your team in a few minutes. It's a pair of
        Microsoft Copilot <strong>Cowork</strong> skills that measure the time and money your team saves with
-       Copilot and turn it into a private, easy-to-read team report emailed to you. This page bakes your Teams
+       Copilot Cowork and turn it into a private, easy-to-read team report emailed to you. This page bakes your Teams
        channel into both skills so they install ready to go — with nothing for your team to set up.</p>
     <div class="badge-row" style="margin-top:22px;">
       <span class="pill"><span class="dot"></span> Quantifies your team's Copilot ROI</span>
@@ -306,34 +306,12 @@
     <div id="status" class="status" role="status" aria-live="polite"></div>
 
     <div id="resolved" class="resolved" aria-live="polite">
-      <p class="verified-tag"><span class="chk">✓</span> Verified — your channel will be baked into both downloads below</p>
+      <p class="verified-tag"><span class="chk">✓</span> Verified — your channel will be baked into both skill downloads in the steps below</p>
       <div class="readout">
         <div class="rowline"><span class="k">Channel name</span><p class="v" id="rName">—</p></div>
         <div class="rowline"><span class="k">team_id</span><p class="v" id="rTeam">—</p></div>
         <div class="rowline"><span class="k">channel_id</span><p class="v" id="rChannel">—</p></div>
       </div>
-    </div>
-
-    <div class="dl-block">
-      <p class="dl-label"><span class="tag">You install</span> Manager skill —
-         <strong>Cowork ROI - Team Dashboard Cowork Skill</strong></p>
-      <div class="row">
-        <button id="downloadMgrBtn" type="button">⬇ Download the manager skill (.zip)</button>
-      </div>
-      <p class="dl-note" id="genNoteMgr">No channel added yet — this will be a <strong>generic</strong> copy that
-         asks whoever installs it for the channel link on first run. Add your channel above to bake it in.</p>
-      <div id="dlMgrStatus" class="status" role="status" aria-live="polite"></div>
-    </div>
-
-    <div class="dl-block">
-      <p class="dl-label"><span class="tag">Send to team</span> Team-member skill —
-         <strong>Cowork ROI - Team Member Cowork Skill</strong></p>
-      <div class="row">
-        <button id="downloadBtn" type="button">⬇ Download the team-member skill (.zip)</button>
-      </div>
-      <p class="dl-note" id="genNote">No channel added yet — this will be a <strong>generic</strong> copy that
-         asks each teammate for the channel link on first run. Add your channel above to bake it in.</p>
-      <div id="dlStatus" class="status" role="status" aria-live="polite"></div>
     </div>
 
     <p class="note privacy">
@@ -347,10 +325,21 @@
       <span class="step-num">2</span>
       <h2>Install the manager skill — “Cowork ROI - Team Dashboard Cowork Skill” (that's you)</h2>
     </div>
-    <p>Open <strong>Copilot Cowork</strong>, upload the <strong>manager</strong> zip you just downloaded, and
-       ask it to install the skill:</p>
+    <div class="dl-block">
+      <p class="dl-label"><span class="tag">You install</span> Manager skill —
+         <strong>Cowork ROI - Team Dashboard Cowork Skill</strong></p>
+      <div class="row">
+        <button id="downloadMgrBtn" type="button">⬇ Download the manager skill (.zip)</button>
+      </div>
+      <p class="dl-note" id="genNoteMgr">No channel added in step 1 yet — this will be a <strong>generic</strong>
+         copy that asks you for the channel link on first run. Add your channel in step 1 to bake it in.</p>
+      <div id="dlMgrStatus" class="status" role="status" aria-live="polite"></div>
+    </div>
+    <p>Then open <strong>Copilot Cowork</strong> and upload the manager zip you just downloaded —
+       <strong>upload the <span class="mono">.zip</span> file as-is; don't unzip it first</strong> — and ask it
+       to install the skill:</p>
     <div class="copybox">
-      <textarea id="installMgrText" readonly>In Copilot Cowork, upload this zip file and ask it to install the skill.</textarea>
+      <textarea id="installMgrText" readonly>Upload this zip file as-is (don't unzip it first) and ask it to install the skill.</textarea>
       <button id="copyMgrBtn" class="secondary" type="button">Copy</button>
     </div>
     <p class="note">Your team's channel is already built in, so it won't ask you for a link. Once it's
@@ -363,11 +352,22 @@
       <span class="step-num">3</span>
       <h2>Share the team-member skill — “Cowork ROI - Team Member Cowork Skill” — with your team</h2>
     </div>
-    <p>Send the <strong>team-member</strong> zip to everyone whose Copilot work you'd like included — over
-       Teams, email, wherever works. Each person uploads it in Copilot Cowork and asks it to install the skill,
-       the same simple step you just did:</p>
+    <div class="dl-block">
+      <p class="dl-label"><span class="tag">Send to team</span> Team-member skill —
+         <strong>Cowork ROI - Team Member Cowork Skill</strong></p>
+      <div class="row">
+        <button id="downloadBtn" type="button">⬇ Download the team-member skill (.zip)</button>
+      </div>
+      <p class="dl-note" id="genNote">No channel added in step 1 yet — this will be a <strong>generic</strong>
+         copy that asks each teammate for the channel link on first run. Add your channel in step 1 to bake it in.</p>
+      <div id="dlStatus" class="status" role="status" aria-live="polite"></div>
+    </div>
+    <p>Send that <strong>team-member</strong> zip to everyone whose Copilot work you'd like included — over
+       Teams, email, wherever works. Each person uploads it in Copilot Cowork —
+       <strong>the <span class="mono">.zip</span> file as-is; don't unzip it first</strong> — and asks it to
+       install the skill, the same simple step you just did:</p>
     <div class="copybox">
-      <textarea id="installText" readonly>In Copilot Cowork, upload this zip file and ask it to install the skill.</textarea>
+      <textarea id="installText" readonly>Upload this zip file as-is (don't unzip it first) and ask it to install the skill.</textarea>
       <button id="copyBtn" class="secondary" type="button">Copy</button>
     </div>
     <p class="note">Because your channel is already baked in, no one on your team is ever asked for a link —
